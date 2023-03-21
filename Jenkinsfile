@@ -13,6 +13,7 @@ pipeline {
         gitCredential = 'ssh_cre'
         dockerHubRegistry = 'harbor.ks.io/test'
         dockerHubRegistryCredential = 'docker_cre'
+	PRPELINE_PATH = "/var/lib/jenkins/workspace/Frontend"
     }
 
     stages {
@@ -34,8 +35,8 @@ pipeline {
         stage('Node Build') {
             steps {
 		sh 'npm cache verify'
-		sh 'cd /var/lib/jenkins/workspace/pipe_for_node/frontend  && sudo npm install'
-		sh 'cd /var/lib/jenkins/workspace/pipe_for_node/frontend  && sudo npm run build'
+		sh 'cd ${PIPELINE_PATH}  && sudo npm install'
+		sh 'cd ${PIPELINE_PATH}  && sudo npm run build'
 		sh 'pwd'
             }
             post {
