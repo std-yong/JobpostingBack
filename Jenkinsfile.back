@@ -43,9 +43,8 @@ pipeline {
 
         stage('collectstatic') {
             steps {
-                dir("${dirJobPosting}/"){
-                    sh 'docker-compose run --rm web sh -c "python manage.py collectstatic"'
-                }
+           	sh 'docker-compose run --rm web sh -c "python manage.py collectstatic"'
+              
             }
             post {
                 failure {
