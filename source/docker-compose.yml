@@ -70,6 +70,7 @@ services:
       - db
       
   web-front:
+    container_name: web-front
     image: node:17-alpine
     volumes:
       - ./frontend/web-front:/home/app/frontend

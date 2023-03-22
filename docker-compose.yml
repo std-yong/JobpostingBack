@@ -68,12 +68,9 @@ services:
     restart: always # <-- always running...
     links:
       - db
-
+      
 networks:
   backend_network:
     driver: bridge
-  frontend_network:
-    driver: bridge
-
 volumes:
   static_volume:
