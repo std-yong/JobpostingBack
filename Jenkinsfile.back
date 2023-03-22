@@ -5,7 +5,7 @@ pipeline {
         gitName = 'seungsura'
         gitEmail = 'seungsura@gmail.com'
         gitWebaddress = 'https://github.com/seungsura/JobpostingBack.git'
-        gitSshaddress = 'git@github.com:seungsura/JobpostingBack.git'
+        gitSshaddress = 'git@github.com:seungsura/JobPosting.git'
         gitCredential = 'ssh_cre'
         dockerHubRegistry = 'harbor.ks.io/back/workspace_backend-server'
         dockerHubRegistryCredential = 'docker_cre'
