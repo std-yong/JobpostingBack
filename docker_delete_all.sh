@@ -1,2 +1,2 @@
 sudo docker rm -f $(docker ps -aq)
-sudo docker rmi -f $(docker image ls -aq)
+sudo docker image rm -f $(docker image ls -aq)
