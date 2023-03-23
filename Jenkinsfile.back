@@ -62,8 +62,7 @@ pipeline {
 
         stage('docker-compose Build') {
             steps {
-                dir("${dirJobPosting}/"){
-                    sh 'docker-compose up --build'
+		sh '${dirJobPosting}/${pipeName}/docker_compose.sh'
                 }
             }
             post {
