@@ -63,8 +63,8 @@ pipeline {
         stage('docker-compose Build') {
             steps {
 		sh '${dirJobPosting}/${pipeName}/docker_compose.sh'
-                }
             }
+            
             post {
                 failure {
                     echo 'build failure'
