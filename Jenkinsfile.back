@@ -10,7 +10,7 @@ pipeline {
         dockerHubRegistry = 'harbor.ks.io/test/workspace_backend-server'
         dockerHubRegistryCredential = 'docker_cre'
         dirJobPosting = '/var/lib/jenkins/workspace'
-
+	pipeName = 'Backend'
     }
 
 
@@ -29,10 +29,25 @@ pipeline {
                     }
             }
         }    
+	
+        stage('Docker Delete all'){
+            steps {
+                sh '${dirJboPosting}/${pipeName}/Docker_delete_all.sh'
+            }
+            post {
+                failure {
+                    echo 'delete failure'
+                }
+                success {
+                    echo 'delete success'
+                }
+            }
+
+        }
 
         stage('migrate') {
             steps {
-		sh '${dirJobPosting}/Backend/manage_migrate.sh'
+		sh '${dirJobPosting}/${pipeName}/manage_migrate.sh'
             }
             post {
                 failure {
@@ -46,9 +61,8 @@ pipeline {
 
         stage('collectstatic') {
             steps {
-                dir("${dirJobPosting}/"){
-                    sh 'docker-compose run --rm web sh -c "python manage.py collectstatic"'
-                }
+		sh '${dirJobPosting}/${pipeName}/compose_run.sh'	  
+
             }
             post {
                 failure {
