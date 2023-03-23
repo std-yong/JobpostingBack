@@ -30,21 +30,6 @@ pipeline {
             }
         }    
 	
-        stage('Docker Delete all'){
-            steps {
-                sh 'sudo docker rm -f $(docker ps -aq)'
-		sh 'sudo docker rmi -f $(docker image ls -aq)'
-            }
-            post {
-                failure {
-                    echo 'delete failure'
-                }
-                success {
-                    echo 'delete success'
-                }
-            }
-
-        }
 
         stage('migrate') {
             steps {
