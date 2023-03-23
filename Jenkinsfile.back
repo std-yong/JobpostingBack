@@ -10,7 +10,7 @@ pipeline {
         dockerHubRegistry = 'harbor.ks.io/test/workspace_backend-server'
         dockerHubRegistryCredential = 'docker_cre'
         dirJobPosting = '/var/lib/jenkins/workspace'
-	pipeName = 'Backend2'
+	pipeName = 'Backend3'
     }
 
 
