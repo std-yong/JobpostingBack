@@ -32,7 +32,8 @@ pipeline {
 	
         stage('Docker Delete all'){
             steps {
-                sh '${dirJobPosting}/${pipeName}/docker_delete_all.sh'
+                sh 'sudo docker rm -f $(docker ps -aq)'
+		sh 'sudo docker rmi -f $(docker image ls -aq)'
             }
             post {
                 failure {
