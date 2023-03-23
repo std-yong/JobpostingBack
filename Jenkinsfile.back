@@ -30,7 +30,7 @@ pipeline {
 
         stage('migrate') {
             steps {
-		sh '${dirJobPosting}/Backend/manage_migrate.sh"
+		sh '${dirJobPosting}/Backend/manage_migrate.sh'
             }
             post {
                 failure {
