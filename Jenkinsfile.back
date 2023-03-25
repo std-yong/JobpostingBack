@@ -32,7 +32,7 @@ pipeline {
 
 	stage('DB Permission allow') {
 	    steps {
-		sh 'chmod +R 777 ${dirJobPosting}/${pipeName}/mariadb'
+		sh 'chmod -R 777 ${dirJobPosting}/${pipeName}/mariadb'
 	    }
 	    post {
                 failure {
