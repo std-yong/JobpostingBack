@@ -30,20 +30,6 @@ pipeline {
             }
         }    
 
-	stage('DB Permission allow') {
-	    steps {
-		sh 'chmod -R 777 ${dirJobPosting}/${pipeName}/mariadb'
-	    }
-	    post {
-                failure {
-                    echo 'migrate failure'
-                }
-                success {
-                    echo 'migrate success'
-                    }
-                }
-	}
-	
         stage('migrate') {
             steps {
                 sh '${dirJobPosting}/${pipeName}/manage_migrate.sh'
