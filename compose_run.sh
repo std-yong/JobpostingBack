@@ -1,1 +1,1 @@
-sudo docker-compose run --rm web sh -c "python manage.py collectstatic"  --no-input
+sudo docker-compose run --rm web sh -c "python manage.py collectstatic --no-input"
