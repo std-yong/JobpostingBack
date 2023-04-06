@@ -23,7 +23,7 @@ load_dotenv(Path(BASE_DIR) / '.env')  #add to
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-4tx9_aim-#ptyqwiy1y$fypp@b*v7@hp9e@z6as)$5po-v6s0i'
+SECRET_KEY = 'django-insecure-#i2fip#^9kn!7!lih+a%x8@otczqh!2n#c4ls!eSECRET_KEYSECRET_KEYa2(pdld$b'
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -48,6 +48,7 @@ INSTALLED_APPS = [
 
     # local
     'todo.apps.TodoConfig',
+    'content.apps.ContentConfig'
 ]
 
 MIDDLEWARE = [
@@ -154,7 +155,7 @@ REST_FRAMEWORK = {
 
 CORS_ORIGIN_ALLOW_ALL = True  #<- 수정필요  
 
-CSRF_TRUSTED_ORIGINS = ['http://192.168.30.55:8080','http://localhost:8080']
+CSRF_TRUSTED_ORIGINS = ['http://192.168.30.56:8080','http://localhost:8080']
 
 #아래 또한 수정 필요
 CORS_ORIGIN_WHITELIST = (
