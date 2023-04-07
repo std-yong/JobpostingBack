@@ -9,10 +9,6 @@ pipeline {
                 sh 'touch hello.txt'
             }
         }
-        stage('echo') {
-            steps {
-                sh 'echo > 'good morning''
-            }
-        }
+
     }
 }
