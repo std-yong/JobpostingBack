@@ -1,4 +1,3 @@
-[ Jenkinsfile.back ]
 pipeline {
     agent {
         label 'build_only'
