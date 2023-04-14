@@ -22,4 +22,4 @@ COPY . ./
 EXPOSE 8000
 
 # Start server
-CMD ["gunicorn", "--bind", ":8000", "config.wsgi:application"]
+CMD python manage.py makemigrations && python manage.py migrate && gunicorn --bind :8000 config.wsgi:application
