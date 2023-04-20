@@ -1,1 +1,107 @@
-z
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-back
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web-back
+  template:
+    metadata:
+      labels:
+        app: web-back
+    spec:
+      containers:
+      - name: web-back
+        image: 236747833953.dkr.ecr.ap-northeast-2.amazonaws.com/web:14
+        ports:
+          - containerPort: 8000
+        env:
+          - name: DATABASE_HOST
+            value: db.cv0mjqsao6wx.ap-northeast-2.rds.amazonaws.com
+        volumeMounts:
+        - name: staticfiles
+          mountPath: /code/staticfiles
+      volumes:
+        - name: staticfiles
+          persistentVolumeClaim:
+            claimName: staticfiles-pvc
+      imagePullSecrets:
+        - name: ap-northeast-2-ecr-secret
+      restartPolicy: Always
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+        - name: web
+          image: 236747833953.dkr.ecr.ap-northeast-2.amazonaws.com/nginx:2.04
+          ports:
+            - containerPort: 3000
+            - containerPort: 8000
+          volumeMounts:
+          - name: staticfiles
+            mountPath: /var/www/static
+      volumes:
+        - name: staticfiles
+          persistentVolumeClaim:
+            claimName: staticfiles-pvc
+      imagePullSecrets:
+        - name: ap-northeast-2-ecr-secret
+      restartPolicy: Always
+
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx
+spec:
+  type: LoadBalancer
+  selector:
+    app: nginx
+  ports:
+    - name: http
+      port: 80
+      targetPort: 3000
+    - name: http-back
+      port: 8080
+      targetPort: 8000
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-back
+spec:
+  selector:
+    app: web-back
+  ports:
+    - name: http
+      port: 8000
+      targetPort: 8000
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: db
+spec:
+  type: ExternalName
+  externalName: db.cv0mjqsao6wx.ap-northeast-2.rds.amazonaws.com
+  ports:
+    - name: mysql
+      port: 3306
