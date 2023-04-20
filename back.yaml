@@ -48,7 +48,7 @@ spec:
     spec:
       containers:
         - name: web
-          image: 236747833953.dkr.ecr.ap-northeast-2.amazonaws.com/nginx:2.03
+          image: 236747833953.dkr.ecr.ap-northeast-2.amazonaws.com/nginx:2.04
           ports:
             - containerPort: 3000
             - containerPort: 8000
