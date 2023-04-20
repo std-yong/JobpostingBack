@@ -29,7 +29,7 @@ spec:
       - env:
         - name: DATABASE_HOST
           value: db.cv0mjqsao6wx.ap-northeast-2.rds.amazonaws.com
-        image: 236747833953.dkr.ecr.ap-northeast-2.amazonaws.com/web:8
+        image: 236747833953.dkr.ecr.ap-northeast-2.amazonaws.com/web:10
         name: web-back
         ports:
         - containerPort: 8000
