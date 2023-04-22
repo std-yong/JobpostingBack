@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     # 3rd party
     'rest_framework',
     'corsheaders',
+    'drf-yasg',
 
     # local
     'todo.apps.TodoConfig',
