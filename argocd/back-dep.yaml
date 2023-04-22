@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: web-back
-        image: 236747833953.dkr.ecr.ap-northeast-2.amazonaws.com/web:14
+        image: 236747833953.dkr.ecr.ap-northeast-2.amazonaws.com/web:16
         ports:
           - containerPort: 8000
         env:
